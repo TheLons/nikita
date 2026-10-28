@@ -25,6 +25,7 @@ const difficultyButtons = [...document.querySelectorAll('[data-difficulty]')];
 const soundButton = document.querySelector('#sound');
 const fireButton = document.querySelector('#fire');
 const ultimateButton = document.querySelector('#ultimate');
+const controlBar = document.querySelector('.control-bar');
 const hearts = document.querySelector('#hearts');
 const bossBar = document.querySelector('#boss-bar');
 const phaseText = document.querySelector('#phase');
@@ -217,6 +218,9 @@ ultimateButton.addEventListener('pointerdown', (event) => {
   event.preventDefault();
   controls.queueUltimate();
 });
+for (const type of ['contextmenu', 'selectstart', 'dragstart']) {
+  controlBar.addEventListener(type, (event) => event.preventDefault());
+}
 
 const keyDirections = {
   ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down',
